@@ -14,7 +14,7 @@ namespace GameJam
         private bool boosted = false;
 
         private const float rotationSpeed = 2f;
-        private const float sailForce = 0.00005f;
+        private const float sailForce = 0.000030f;
         private const int maskSolarWind = 1 << 8;
 
         private void Start()
@@ -49,6 +49,12 @@ namespace GameJam
         {
             celestialBodyTarget = null;
             transform.Rotate(new Vector3(0, 0, clockwise * rotationSpeed));
+        }
+
+        public void SetSailNeutralState()
+        {
+            celestialBodyTarget = null;
+            transform.forward = -sun.transform.forward;
         }
 
         public void SetCelestialBodyTarget(Transform target, float expand)

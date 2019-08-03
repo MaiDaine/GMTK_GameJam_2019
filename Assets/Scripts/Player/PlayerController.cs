@@ -34,8 +34,10 @@ namespace GameJam
                 sailsController.SetBoost(true);
                 boosterReserve -= Time.deltaTime;
             }
-            else
+            else if (Input.GetKeyUp(KeyCode.Z))
                 sailsController.SetBoost(false);
+            if (Input.GetKey(KeyCode.S))
+                sailsController.SetSailNeutralState();
 
             //Time control
             if (Input.GetKeyDown(KeyCode.KeypadPlus) && Time.timeScale < 5)
