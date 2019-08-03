@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-namespace Prototype
+namespace GameJam
 {
     public class GameEventListener : MonoBehaviour
     {

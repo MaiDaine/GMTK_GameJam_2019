@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Prototype
+namespace GameJam
 {
     [CreateAssetMenu(menuName = "Events/GameEvent")]
     public class GameEvent : ScriptableObject
