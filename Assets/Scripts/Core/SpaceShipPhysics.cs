@@ -9,7 +9,12 @@ public class SpaceShipPhysics : MonoBehaviour
 
     private void Awake()
     {
-        velocity = startVelocity;
+        ResetState();
+    }
+
+    private void FixedUpdate()
+    {
+        transform.position += velocity;
     }
 
     public void ApplyForce(Vector3 force)
@@ -17,8 +22,9 @@ public class SpaceShipPhysics : MonoBehaviour
         velocity += force;
     }
 
-    private void FixedUpdate()
+    public void ResetState()
     {
-        transform.position += velocity;
+        velocity = startVelocity;
     }
+    
 }

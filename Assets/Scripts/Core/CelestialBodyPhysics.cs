@@ -8,7 +8,7 @@ public class CelestialBodyPhysics : MonoBehaviour
     private List<SpaceShipPhysics> affectedObjets;
 
     private const float G = 6.674e-11f;
-    private const float distanceScale = 100f;
+    private const float distanceScale = 1000f;
 
     private void Awake()
     {

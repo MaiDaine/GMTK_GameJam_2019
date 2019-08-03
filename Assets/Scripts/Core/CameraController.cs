@@ -14,13 +14,18 @@ public class CameraController : MonoBehaviour
         playerCamera = GetComponent<Camera>();
     }
 
-    void Update()
+    private void Update()
     {
         if (Input.GetAxis("Mouse ScrollWheel") < 0f && playerCamera.orthographicSize < zoomMax)
             playerCamera.orthographicSize += 1f;
         if (Input.GetAxis("Mouse ScrollWheel") > 0f && playerCamera.orthographicSize > zoomMin)
             playerCamera.orthographicSize -= 1f;
         if (Input.GetKey(KeyCode.Space))
-            playerCamera.transform.position = new Vector3(playerSpaceShip.transform.position.x, playerSpaceShip.transform.position.y, playerCamera.transform.position.z);
+            ResetCamera();
+    }
+
+    public void ResetCamera()
+    {
+        playerCamera.transform.position = new Vector3(playerSpaceShip.transform.position.x, playerSpaceShip.transform.position.y, playerCamera.transform.position.z);
     }
 }
