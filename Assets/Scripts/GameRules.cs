@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEngine.UI;
+using UnityEngine;
 
 namespace GameJam
 {
@@ -8,22 +9,32 @@ namespace GameJam
         public GameObject startPosition;
         public GameObject blBound;
         public GameObject trBound;
+        public Text timerText;
 
-        private void LateUpdate()
+        private float timer;
+
+        private void Start()
+        {
+            timer = 0f;
+        }
+
+        private void FixedUpdate()
         {
             if (Input.GetKeyDown(KeyCode.R))
                 OnGameOver();
             else
                 CheckMapBounds();
+            UpdateTimer();
         }
 
         public void OnGameOver()
         {
             player.GetComponent<SpaceShipPhysics>().ResetState();
             player.transform.position = startPosition.transform.position;
-            player.GetComponentInChildren<TrailRenderer>().Clear();
-            player.GetComponentInChildren<TrailRenderer>().AddPosition(transform.position);
+            player.gameObject.GetComponentInChildren<TrailRenderer>().Clear();
+            player.gameObject.GetComponentInChildren<TrailRenderer>().AddPosition(transform.position);
             Camera.main.GetComponent<CameraController>().ResetCamera();
+            timer = 0f;
         }
 
         public void OnVictory()
@@ -39,6 +50,12 @@ namespace GameJam
                 || player.transform.position.y > trBound.transform.position.y 
                 || player.transform.position.y < blBound.transform.position.y)
                 OnGameOver();
+        }
+
+        private void UpdateTimer()
+        {
+            timer += Time.deltaTime;
+            timerText.text =  timer.ToString("F2");
         }
     }
 }
