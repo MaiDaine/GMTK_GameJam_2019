@@ -7,7 +7,6 @@ public class CelestialBodyPhysics : MonoBehaviour
 
     private List<SpaceShipPhysics> affectedObjets;
 
-    private const float G = 6.674e-11f;
     private const float distanceScale = 1000f;
 
     private void Awake()
@@ -19,7 +18,7 @@ public class CelestialBodyPhysics : MonoBehaviour
     {
         foreach (SpaceShipPhysics obj in affectedObjets)
         {
-            float force = /*G **/ (mass * obj.satelliteMass) / Mathf.Pow(distanceScale * Vector3.Distance(transform.position, obj.gameObject.transform.position), 2);
+            float force = (mass * obj.satelliteMass) / Mathf.Pow(distanceScale * Vector3.Distance(transform.position, obj.gameObject.transform.position), 2);
             Vector3 otherPos = obj.gameObject.transform.position;
             obj.ApplyForce(new Vector3((transform.position.x - otherPos.x) * force, (transform.position.y - otherPos.y) * force, 0f));
         }

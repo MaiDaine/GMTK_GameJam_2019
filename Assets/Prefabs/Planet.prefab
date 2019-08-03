@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 304921046337331423}
   m_Layer: 8
   m_Name: Planet
-  m_TagString: Untagged
+  m_TagString: CelestialBody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

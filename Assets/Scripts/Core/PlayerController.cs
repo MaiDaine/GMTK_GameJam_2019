@@ -50,6 +50,15 @@ public class PlayerController : MonoBehaviour
         CheckMapBounds();
     }
 
+    public void ResetLevel()
+    {
+        GetComponent<SpaceShipPhysics>().ResetState();
+        gameObject.transform.position = startPosition.transform.position;
+        GetComponentInChildren<TrailRenderer>().Clear();
+        GetComponentInChildren<TrailRenderer>().AddPosition(transform.position);
+        Camera.main.GetComponent<CameraController>().ResetCamera();
+    }
+
     private void SetOrbit(float expand)
     {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
@@ -66,12 +75,9 @@ public class PlayerController : MonoBehaviour
             ResetLevel();
     }
 
-    private void ResetLevel()
+    private void OnTriggerEnter(Collider other)
     {
-        GetComponent<SpaceShipPhysics>().ResetState();
-        gameObject.transform.position = startPosition.transform.position;
-        GetComponentInChildren<TrailRenderer>().Clear();
-        GetComponentInChildren<TrailRenderer>().AddPosition(transform.position);
-        Camera.main.GetComponent<CameraController>().ResetCamera();
+        if (other.tag == "CelestialBody")
+            ResetLevel();
     }
 }
