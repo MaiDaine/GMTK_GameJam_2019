@@ -7,11 +7,12 @@ namespace GameJam
     public class CelestialBody : MonoBehaviour
     {
         public float mass;
+        public Canvas canvas;
         public Text distanceText;
 
         private SpaceShip ship = null;
-
         private const float distanceScale = 1000f;
+
 
         private void FixedUpdate()
         {
@@ -22,6 +23,13 @@ namespace GameJam
 
                 ship.ApplyForce(new Vector3((transform.position.x - otherPos.x) * force, (transform.position.y - otherPos.y) * force, 0f));
                 distanceText.text = Vector3.Distance(transform.position, ship.gameObject.transform.position).ToString("F2");
+
+                RectTransform canvasRect = canvas.GetComponent<RectTransform>();
+                Vector2 viewportPosition = Camera.main.WorldToViewportPoint(transform.position);
+                Vector2 WorldObject_ScreenPosition = new Vector2(
+                ((viewportPosition.x * canvasRect.sizeDelta.x) - (canvasRect.sizeDelta.x * 0.5f)),
+                ((viewportPosition.y * canvasRect.sizeDelta.y) - (canvasRect.sizeDelta.y * 0.5f)));
+                distanceText.GetComponent<RectTransform>().anchoredPosition = WorldObject_ScreenPosition;
             }
         }
 
