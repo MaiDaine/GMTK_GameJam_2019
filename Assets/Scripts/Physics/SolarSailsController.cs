@@ -13,6 +13,7 @@ namespace GameJam
         private Transform celestialBodyTarget = null;
         private float orbitModification;
         private bool boosted = false;
+        private Quaternion startRotation;
 
         private const float rotationSpeed = 2f;
         private const float sailForce = 0.000030f;
@@ -21,6 +22,7 @@ namespace GameJam
         private void Start()
         {
             ship = GetComponentInParent<SpaceShip>();
+            startRotation = transform.rotation;
         }
 
         private void FixedUpdate()
@@ -56,7 +58,7 @@ namespace GameJam
         public void SetSailNeutralState()
         {
             celestialBodyTarget = null;
-            transform.forward = -sun.transform.forward;
+            transform.rotation = startRotation;
         }
 
         public void SetCelestialBodyTarget(Transform target, float expand)

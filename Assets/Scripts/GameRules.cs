@@ -33,7 +33,6 @@ namespace GameJam
             player.transform.position = startPosition.transform.position;
             player.gameObject.GetComponentInChildren<TrailRenderer>().Clear();
             player.gameObject.GetComponentInChildren<TrailRenderer>().AddPosition(transform.position);
-            Camera.main.GetComponent<CameraController>().ResetCamera();
             timer = 0f;
         }
 

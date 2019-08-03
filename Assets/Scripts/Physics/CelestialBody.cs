@@ -11,8 +11,17 @@ namespace GameJam
         public Text distanceText;
 
         private SpaceShip ship = null;
-        private const float distanceScale = 1000f;
+        private const float distanceScale = 1500f;
 
+        private void Start()
+        {
+            RectTransform canvasRect = canvas.GetComponent<RectTransform>();
+            Vector2 viewportPosition = Camera.main.WorldToViewportPoint(transform.position);
+            Vector2 WorldObject_ScreenPosition = new Vector2(
+            ((viewportPosition.x * canvasRect.sizeDelta.x) - (canvasRect.sizeDelta.x * 0.5f)),
+            ((viewportPosition.y * canvasRect.sizeDelta.y) - (canvasRect.sizeDelta.y * 0.5f)));
+            distanceText.GetComponent<RectTransform>().anchoredPosition = WorldObject_ScreenPosition;
+        }
 
         private void FixedUpdate()
         {
@@ -22,21 +31,14 @@ namespace GameJam
                 Vector3 otherPos = ship.gameObject.transform.position;
 
                 ship.ApplyForce(new Vector3((transform.position.x - otherPos.x) * force, (transform.position.y - otherPos.y) * force, 0f));
-                distanceText.text = Vector3.Distance(transform.position, ship.gameObject.transform.position).ToString("F2");
-
-                RectTransform canvasRect = canvas.GetComponent<RectTransform>();
-                Vector2 viewportPosition = Camera.main.WorldToViewportPoint(transform.position);
-                Vector2 WorldObject_ScreenPosition = new Vector2(
-                ((viewportPosition.x * canvasRect.sizeDelta.x) - (canvasRect.sizeDelta.x * 0.5f)),
-                ((viewportPosition.y * canvasRect.sizeDelta.y) - (canvasRect.sizeDelta.y * 0.5f)));
-                distanceText.GetComponent<RectTransform>().anchoredPosition = WorldObject_ScreenPosition;
+                distanceText.text = (force * 1000f).ToString("F2");
             }
         }
 
         private void OnTriggerEnter(Collider other)
         {
             ship = other.GetComponent<SpaceShip>();
-            if (ship != null)
+            if (ship != null) { }
                 distanceText.gameObject.SetActive(true);
         }
 
