@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEngine.UI;
+using UnityEngine;
 
 namespace GameJam
 {
@@ -8,7 +9,7 @@ namespace GameJam
         public ParticleSystem protonsEffect;
         public ParticleSystem boostEffect;
 
-        private SpaceShipPhysics satellite;
+        private SpaceShip ship;
         private Transform celestialBodyTarget = null;
         private float orbitModification;
         private bool boosted = false;
@@ -19,7 +20,7 @@ namespace GameJam
 
         private void Start()
         {
-            satellite = GetComponentInParent<SpaceShipPhysics>();
+            ship = GetComponentInParent<SpaceShip>();
         }
 
         private void FixedUpdate()
@@ -29,6 +30,7 @@ namespace GameJam
 
             if (celestialBodyTarget != null)
                 transform.up = orbitModification * (transform.position - celestialBodyTarget.position).normalized;
+
             if (Vector3.SqrMagnitude(sun.transform.right - transform.right) < 2f)//Sail orientation will produce thrust if sqrMag is [0, 2]
             {
                 if (!protonsEffect.isPlaying)
@@ -36,9 +38,9 @@ namespace GameJam
                 if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, maskSolarWind) && hitInfo.collider.gameObject == gameObject)//Check if sails receives sun
                 {
                     if (boosted)
-                        satellite.ApplyForce(transform.right * sailForce);
+                        ship.ApplyForce(transform.right * sailForce);
                     else
-                        satellite.ApplyForce(transform.right * sailForce * 2);
+                        ship.ApplyForce(transform.right * sailForce * 2);
                 }
             }
             else if (protonsEffect.isPlaying)

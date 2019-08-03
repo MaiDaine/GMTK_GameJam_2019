@@ -2,10 +2,10 @@
 
 namespace GameJam
 {
-    public class SpaceShipPhysics : MonoBehaviour
+    public class SpaceShip : MonoBehaviour
     {
         public Vector3 startVelocity;
-        public float shipMass;
+        public float mass;
 
         private Vector3 velocity;
 

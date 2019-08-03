@@ -29,7 +29,7 @@ namespace GameJam
 
         public void OnGameOver()
         {
-            player.GetComponent<SpaceShipPhysics>().ResetState();
+            player.GetComponent<SpaceShip>().ResetState();
             player.transform.position = startPosition.transform.position;
             player.gameObject.GetComponentInChildren<TrailRenderer>().Clear();
             player.gameObject.GetComponentInChildren<TrailRenderer>().AddPosition(transform.position);
