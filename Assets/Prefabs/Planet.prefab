@@ -43,7 +43,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 8
+  m_Radius: 4
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &304921044972062161
 MonoBehaviour:
@@ -57,9 +57,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddeefc7388ca6b748a0dc1ceae020ce2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mass: 500
-  distanceText: {fileID: 0}
+  mass: 1000
   canvas: {fileID: 0}
+  distanceText: {fileID: 0}
 --- !u!1 &304921046337331420
 GameObject:
   m_ObjectHideFlags: 0
@@ -69,8 +69,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 304921046337331408}
-  - component: {fileID: 304921046337331409}
-  - component: {fileID: 304921046337331422}
   - component: {fileID: 304921046337331423}
   - component: {fileID: 4605830550278818009}
   m_Layer: 8
@@ -89,58 +87,12 @@ Transform:
   m_GameObject: {fileID: 304921046337331420}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 304921044972062174}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &304921046337331409
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 304921046337331420}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &304921046337331422
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 304921046337331420}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!135 &304921046337331423
 SphereCollider:
   m_ObjectHideFlags: 0
