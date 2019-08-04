@@ -38,7 +38,7 @@ namespace GameJam
         private void OnTriggerEnter(Collider other)
         {
             ship = other.GetComponent<SpaceShip>();
-            if (ship != null) { }
+            if (ship != null)
                 distanceText.gameObject.SetActive(true);
         }
 

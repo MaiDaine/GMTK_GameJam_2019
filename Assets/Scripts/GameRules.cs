@@ -38,7 +38,6 @@ namespace GameJam
             player.gameObject.GetComponentInChildren<TrailRenderer>().Clear();
             player.gameObject.GetComponentInChildren<TrailRenderer>().AddPosition(transform.position);
             timer = 0f;
-            player.GetComponent<AudioSource>().Play();
         }
 
         public void OnVictory()
@@ -50,6 +49,7 @@ namespace GameJam
         public void OnShipCrash()
         {
             PlayAudioClip(explosionSound);
+            OnGameOver();
         }
 
         private void CheckMapBounds()

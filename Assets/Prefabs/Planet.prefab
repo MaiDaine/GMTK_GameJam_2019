@@ -118,4 +118,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e5ac370633a7a04c8a05062ea470283, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverEvent: {fileID: 11400000, guid: 15e2645151885d64b8a65c63cb902993, type: 2}
+  gameOverEvent: {fileID: 11400000, guid: 2f9bc3c7da7907246bf0e5ae6d5297d2, type: 2}

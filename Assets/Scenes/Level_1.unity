@@ -602,6 +602,12 @@ PrefabInstance:
       propertyPath: distanceText
       value: 
       objectReference: {fileID: 764089746}
+    - target: {fileID: 4605830550278818009, guid: e675880da30dbfa47b87b708d40ef986,
+        type: 3}
+      propertyPath: gameOverEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 2f9bc3c7da7907246bf0e5ae6d5297d2,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e675880da30dbfa47b87b708d40ef986, type: 3}
 --- !u!1001 &953814727
@@ -674,7 +680,7 @@ PrefabInstance:
     - target: {fileID: 7023141363263023351, guid: 4ddeefd0042f1e54cbbce94d03d0b687,
         type: 3}
       propertyPath: volume
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ddeefd0042f1e54cbbce94d03d0b687, type: 3}
@@ -1089,6 +1095,12 @@ PrefabInstance:
       propertyPath: distanceText
       value: 
       objectReference: {fileID: 521441288}
+    - target: {fileID: 4605830550278818009, guid: e675880da30dbfa47b87b708d40ef986,
+        type: 3}
+      propertyPath: gameOverEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 2f9bc3c7da7907246bf0e5ae6d5297d2,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e675880da30dbfa47b87b708d40ef986, type: 3}
 --- !u!1001 &1325395595306052292
@@ -1317,6 +1329,16 @@ PrefabInstance:
       propertyPath: timerText
       value: 
       objectReference: {fileID: 1252377187}
+    - target: {fileID: 3820251264173990771, guid: 2c2e7896a5641bf4598d6df04378123a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 3820251264173990771, guid: 2c2e7896a5641bf4598d6df04378123a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.07
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c2e7896a5641bf4598d6df04378123a, type: 3}
 --- !u!1001 &4149661469635764442
