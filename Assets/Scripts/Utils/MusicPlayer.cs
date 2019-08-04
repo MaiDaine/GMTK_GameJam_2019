@@ -1,50 +1,53 @@
 ﻿using UnityEngine;
 
-public class MusicPlayer : MonoBehaviour
+namespace GameJam
 {
-    public static MusicPlayer instance = null;
-
-    public AudioClip[] audioClips;
-    public int volume = 2;
-
-    private AudioSource audioSource;
-    private int audioIndex = 1;
-    private bool volumeSwitch = false;
-    private float volumeModifer = 0.1f;
-
-    private void Awake()
+    public class MusicPlayer : MonoBehaviour
     {
-        if (instance == null)
-            instance = this;
-        else
+        public static MusicPlayer instance = null;
+
+        public AudioClip[] audioClips;
+        public int volume = 2;
+
+        private AudioSource audioSource;
+        private int audioIndex = 1;
+        private bool volumeSwitch = false;
+        private float volumeModifer = 0.1f;
+
+        private void Awake()
         {
-            Destroy(this.gameObject);
-            return;
+            if (instance == null)
+                instance = this;
+            else
+            {
+                Destroy(this.gameObject);
+                return;
+            }
+
+            DontDestroyOnLoad(this.gameObject);
+            audioSource = GetComponent<AudioSource>();
+            audioSource.volume = (float)volume * volumeModifer;
         }
 
-        DontDestroyOnLoad(this.gameObject);
-        audioSource = GetComponent<AudioSource>();
-        audioSource.volume = (float)volume * volumeModifer;
-    }
-
-    private void Update()
-    {
-        if (!audioSource.isPlaying)
+        private void Update()
         {
-            audioSource.clip = audioClips[audioIndex];
-            audioSource.Play();
-            audioIndex = (audioIndex + 1) % audioClips.Length;
+            if (!audioSource.isPlaying)
+            {
+                audioSource.clip = audioClips[audioIndex];
+                audioSource.Play();
+                audioIndex = (audioIndex + 1) % audioClips.Length;
+            }
         }
-    }
 
-    public void ChangeVolume()
-    {
-        if (!volumeSwitch)
-            volume -= 1;
-        else
-            volume += 1;
-        if (volume == 0 || volume == 2)
-            volumeSwitch = !volumeSwitch;
-        audioSource.volume = (float)volume * volumeModifer;
+        public void ChangeVolume()
+        {
+            if (!volumeSwitch)
+                volume -= 1;
+            else
+                volume += 1;
+            if (volume == 0 || volume == 2)
+                volumeSwitch = !volumeSwitch;
+            audioSource.volume = (float)volume * volumeModifer;
+        }
     }
 }

@@ -12,6 +12,7 @@ namespace GameJam
         public Text timerText;
         public AudioClip explosionSound;
         public AudioClip outOfReachSound;
+        public FloatVariable totalTimer;
 
         private AudioSource audioSource;
         private float timer;
@@ -31,12 +32,18 @@ namespace GameJam
             UpdateTimer();
         }
 
+        public void OnVictory()
+        {
+            totalTimer.SetValue(totalTimer.value + timer);
+        }
+
         public void OnGameOver()
         {
             player.GetComponent<SpaceShip>().ResetState();
             player.transform.position = startPosition.transform.position;
             player.gameObject.GetComponentInChildren<TrailRenderer>().Clear();
             player.gameObject.GetComponentInChildren<TrailRenderer>().AddPosition(transform.position);
+            totalTimer.SetValue(totalTimer.value + timer);
             timer = 0f;
         }
 

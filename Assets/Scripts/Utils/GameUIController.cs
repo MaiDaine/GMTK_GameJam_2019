@@ -1,21 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UI;
+﻿using UnityEngine.UI;
 using UnityEngine;
 
-public class GameUIController : MonoBehaviour
+namespace GameJam
 {
-    public Button soundButton;
-    public Sprite[] soundButtonImages;
-
-    private void Start()
+    public class GameUIController : MonoBehaviour
     {
-        soundButton.image.sprite = soundButtonImages[MusicPlayer.instance.volume];
-    }
+        public Button soundButton;
+        public Sprite[] soundButtonImages;
 
-    public void OnVolumeChange()
-    {
-        MusicPlayer.instance.ChangeVolume();
-        soundButton.image.sprite = soundButtonImages[MusicPlayer.instance.volume];
+        private void Start()
+        {
+            soundButton.image.sprite = soundButtonImages[MusicPlayer.instance.volume];
+        }
+
+        public void OnVolumeChange()
+        {
+            MusicPlayer.instance.ChangeVolume();
+            soundButton.image.sprite = soundButtonImages[MusicPlayer.instance.volume];
+        }
     }
 }

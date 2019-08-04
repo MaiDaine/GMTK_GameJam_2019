@@ -1,35 +1,39 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelLoader : MonoBehaviour
+namespace GameJam
 {
-    public int maxLevel;
-
-    private int levelCount = 0;
-    private bool locked = false;
-
-    private void Awake()
+    public class LevelLoader : MonoBehaviour
     {
-        DontDestroyOnLoad(this.gameObject);
-    }
+        public int maxLevel;
+        public GameEvent gameEnd;
 
-    public void OnNextLevel()
-    {
-        if (locked)
-            return;
-        locked = true;
-        levelCount++;
-        if (levelCount < maxLevel)
+        private int levelCount = 0;
+        private bool locked = false;
+
+        private void Awake()
         {
-            SceneManager.sceneLoaded += OnSceneLoaded;
-            SceneManager.LoadScene(levelCount);
+            DontDestroyOnLoad(this.gameObject);
         }
-        else
-            Application.Quit();
-    }
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        locked = false;
+        public void OnNextLevel()
+        {
+            if (locked)
+                return;
+            locked = true;
+            levelCount++;
+            if (levelCount < maxLevel)
+            {
+                SceneManager.sceneLoaded += OnSceneLoaded;
+                SceneManager.LoadScene(levelCount);
+            }
+            else
+                gameEnd.Raise();
+        }
+
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            locked = false;
+        }
     }
 }
