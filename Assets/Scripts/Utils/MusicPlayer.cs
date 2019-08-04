@@ -10,6 +10,7 @@ public class MusicPlayer : MonoBehaviour
     private AudioSource audioSource;
     private int audioIndex = 1;
     private bool volumeSwitch = false;
+    private float volumeModifer = 0.1f;
 
     private void Awake()
     {
@@ -23,7 +24,7 @@ public class MusicPlayer : MonoBehaviour
 
         DontDestroyOnLoad(this.gameObject);
         audioSource = GetComponent<AudioSource>();
-        audioSource.volume = (float)volume * 0.4f;
+        audioSource.volume = (float)volume * volumeModifer;
     }
 
     private void Update()
@@ -44,6 +45,6 @@ public class MusicPlayer : MonoBehaviour
             volume += 1;
         if (volume == 0 || volume == 2)
             volumeSwitch = !volumeSwitch;
-        audioSource.volume = 0.4f * (float)volume;
+        audioSource.volume = (float)volume * volumeModifer;
     }
 }

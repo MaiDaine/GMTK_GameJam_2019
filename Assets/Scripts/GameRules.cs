@@ -24,7 +24,7 @@ namespace GameJam
 
         private void FixedUpdate()
         {
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.Space))
                 OnGameOver();
             else
                 CheckMapBounds();
@@ -38,12 +38,6 @@ namespace GameJam
             player.gameObject.GetComponentInChildren<TrailRenderer>().Clear();
             player.gameObject.GetComponentInChildren<TrailRenderer>().AddPosition(transform.position);
             timer = 0f;
-        }
-
-        public void OnVictory()
-        {
-            Debug.Log("WIN");
-            OnGameOver();//TODO
         }
 
         public void OnShipCrash()
