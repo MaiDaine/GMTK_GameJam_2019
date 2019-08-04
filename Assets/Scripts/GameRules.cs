@@ -10,12 +10,16 @@ namespace GameJam
         public GameObject blBound;
         public GameObject trBound;
         public Text timerText;
+        public AudioClip explosionSound;
+        public AudioClip outOfReachSound;
 
+        private AudioSource audioSource;
         private float timer;
 
         private void Start()
         {
             timer = 0f;
+            audioSource = GetComponent<AudioSource>();
         }
 
         private void FixedUpdate()
@@ -34,6 +38,7 @@ namespace GameJam
             player.gameObject.GetComponentInChildren<TrailRenderer>().Clear();
             player.gameObject.GetComponentInChildren<TrailRenderer>().AddPosition(transform.position);
             timer = 0f;
+            player.GetComponent<AudioSource>().Play();
         }
 
         public void OnVictory()
@@ -42,19 +47,34 @@ namespace GameJam
             OnGameOver();//TODO
         }
 
+        public void OnShipCrash()
+        {
+            PlayAudioClip(explosionSound);
+        }
+
         private void CheckMapBounds()
         {
-            if (player.transform.position.x > trBound.transform.position.x 
+            if (player.transform.position.x > trBound.transform.position.x
                 || player.transform.position.x < blBound.transform.position.x
-                || player.transform.position.y > trBound.transform.position.y 
+                || player.transform.position.y > trBound.transform.position.y
                 || player.transform.position.y < blBound.transform.position.y)
+            {
                 OnGameOver();
+                PlayAudioClip(outOfReachSound);
+            }
         }
 
         private void UpdateTimer()
         {
             timer += Time.deltaTime;
-            timerText.text =  timer.ToString("F2");
+            timerText.text = timer.ToString("F2");
+        }
+
+        private void PlayAudioClip(AudioClip clip)
+        {
+            audioSource.volume = MusicPlayer.instance.volume;
+            audioSource.clip = clip;
+            audioSource.Play();
         }
     }
 }

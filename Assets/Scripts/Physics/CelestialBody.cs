@@ -31,7 +31,7 @@ namespace GameJam
                 Vector3 otherPos = ship.gameObject.transform.position;
 
                 ship.ApplyForce(new Vector3((transform.position.x - otherPos.x) * force, (transform.position.y - otherPos.y) * force, 0f));
-                distanceText.text = (force * 1000f).ToString("F2");
+                distanceText.text = (force * 10000f).ToString("F1");
             }
         }
 

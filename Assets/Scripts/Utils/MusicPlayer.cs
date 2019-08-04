@@ -23,6 +23,7 @@ public class MusicPlayer : MonoBehaviour
 
         DontDestroyOnLoad(this.gameObject);
         audioSource = GetComponent<AudioSource>();
+        audioSource.volume = (float)volume * 0.4f;
     }
 
     private void Update()
