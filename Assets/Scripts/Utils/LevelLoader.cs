@@ -6,6 +6,7 @@ public class LevelLoader : MonoBehaviour
     public int maxLevel;
 
     private int levelCount = 0;
+    private bool locked = false;
 
     private void Awake()
     {
@@ -14,10 +15,21 @@ public class LevelLoader : MonoBehaviour
 
     public void OnNextLevel()
     {
+        if (locked)
+            return;
+        locked = true;
         levelCount++;
         if (levelCount < maxLevel)
+        {
+            SceneManager.sceneLoaded += OnSceneLoaded;
             SceneManager.LoadScene(levelCount);
+        }
         else
             Application.Quit();
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        locked = false;
     }
 }

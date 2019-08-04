@@ -27,6 +27,7 @@ namespace GameJam
         public void ResetState()
         {
             velocity = startVelocity;
+            GetComponentInChildren<SolarSailsController>().SetSailNeutralState();
         }
 
     }
