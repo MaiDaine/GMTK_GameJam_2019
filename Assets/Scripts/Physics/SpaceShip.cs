@@ -9,7 +9,7 @@ namespace GameJam
 
         private Vector3 velocity;
 
-        private void Awake()
+        private void Start()
         {
             ResetState();
         }

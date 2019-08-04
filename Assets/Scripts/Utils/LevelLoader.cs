@@ -7,6 +7,7 @@ namespace GameJam
     {
         public int maxLevel;
         public GameEvent gameEnd;
+        public FloatVariable totaltime;
 
         private int levelCount = 0;
         private bool locked = false;
@@ -14,6 +15,7 @@ namespace GameJam
         private void Awake()
         {
             DontDestroyOnLoad(this.gameObject);
+            totaltime.SetValue(0f);
         }
 
         public void OnNextLevel()

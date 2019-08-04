@@ -14,10 +14,10 @@ namespace GameJam
         private Quaternion startRotation;
 
         private const float rotationSpeed = 2f;
-        private const float sailForce = 0.0005f;
+        private const float sailForce = 0.0004f;
         private const int maskSolarWind = 1 << 8;
 
-        private void Start()
+        private void Awake()
         {
             ship = GetComponentInParent<SpaceShip>();
             startRotation = transform.rotation;

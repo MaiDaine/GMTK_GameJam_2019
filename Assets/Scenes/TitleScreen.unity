@@ -150,7 +150,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b0f55bd66868f4a8bd27bbf615d357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxLevel: 3
+  maxLevel: 6
+  gameEnd: {fileID: 11400000, guid: b7fd730a6d1c50d40ad9b774355385f1, type: 2}
+  totaltime: {fileID: 11400000, guid: ba679277173d96a4d9f5664eb46a2f0e, type: 2}
 --- !u!4 &135532793
 Transform:
   m_ObjectHideFlags: 0
@@ -5774,7 +5776,7 @@ PrefabInstance:
     - target: {fileID: 304921044972062161, guid: e675880da30dbfa47b87b708d40ef986,
         type: 3}
       propertyPath: mass
-      value: 2000
+      value: 2500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e675880da30dbfa47b87b708d40ef986, type: 3}
@@ -5790,10 +5792,30 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1325395595700156748, guid: d60ff2cb574124d4a865e4c909ae18c6,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1325395595700156748, guid: d60ff2cb574124d4a865e4c909ae18c6,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1325395595700156748, guid: d60ff2cb574124d4a865e4c909ae18c6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 1325395596879241840, guid: d60ff2cb574124d4a865e4c909ae18c6,
         type: 3}
       propertyPath: m_Name
       value: PlayerShip
+      objectReference: {fileID: 0}
+    - target: {fileID: 1325395596879241840, guid: d60ff2cb574124d4a865e4c909ae18c6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1325395596879241855, guid: d60ff2cb574124d4a865e4c909ae18c6,
         type: 3}
@@ -6067,6 +6089,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 28.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3820251263300116847, guid: 2c2e7896a5641bf4598d6df04378123a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 15.5
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3820251264915315474, guid: 2c2e7896a5641bf4598d6df04378123a, type: 3}
