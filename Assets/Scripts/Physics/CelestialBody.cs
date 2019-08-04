@@ -27,7 +27,7 @@ namespace GameJam
         {
             if (ship != null)
             {
-                float force = (mass * ship.mass) / Mathf.Pow(distanceScale * Vector3.Distance(transform.position, ship.gameObject.transform.position), 2);
+                float force = mass / Mathf.Pow(distanceScale * Vector3.Distance(transform.position, ship.gameObject.transform.position), 2);
                 Vector3 otherPos = ship.gameObject.transform.position;
 
                 ship.ApplyForce(new Vector3((transform.position.x - otherPos.x) * force, (transform.position.y - otherPos.y) * force, 0f));

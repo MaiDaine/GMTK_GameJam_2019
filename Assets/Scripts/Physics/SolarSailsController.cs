@@ -7,16 +7,14 @@ namespace GameJam
     {
         public GameObject sun;
         public ParticleSystem protonsEffect;
-        public ParticleSystem boostEffect;
 
         private SpaceShip ship;
         private Transform celestialBodyTarget = null;
         private float orbitModification;
-        private bool boosted = false;
         private Quaternion startRotation;
 
         private const float rotationSpeed = 2f;
-        private const float sailForce = 0.000030f;
+        private const float sailForce = 0.0005f;
         private const int maskSolarWind = 1 << 8;
 
         private void Start()
@@ -27,23 +25,22 @@ namespace GameJam
 
         private void FixedUpdate()
         {
-            Ray ray = new Ray(sun.transform.position, new Vector3(transform.position.x - sun.transform.position.x, transform.position.y - sun.transform.position.y, 0f));
-            RaycastHit hitInfo;
+            //Ray ray = new Ray(transform.position, new Vector3(sun.transform.position.x, 0f, 0f));
+            //RaycastHit hitInfo;
 
             if (celestialBodyTarget != null)
                 transform.up = orbitModification * (transform.position - celestialBodyTarget.position).normalized;
 
             if (Vector3.SqrMagnitude(sun.transform.right - transform.right) < 2f)//Sail orientation will produce thrust if sqrMag is [0, 2]
             {
-                if (!protonsEffect.isPlaying)
-                    protonsEffect.Play();
-                if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, maskSolarWind) && hitInfo.collider.gameObject == gameObject)//Check if sails receives sun
-                {
-                    if (boosted)
+                //if (!Physics.Raycast(ray, out hitInfo, 10000f, maskSolarWind))//Check if sails receives sun
+                //{
+                    if (!protonsEffect.isPlaying)
+                        protonsEffect.Play();
                         ship.ApplyForce(transform.right * sailForce);
-                    else
-                        ship.ApplyForce(transform.right * sailForce * 2);
-                }
+                //}
+                //else if (protonsEffect.isPlaying)
+                //    protonsEffect.Stop();
             }
             else if (protonsEffect.isPlaying)
                 protonsEffect.Stop();
@@ -65,15 +62,6 @@ namespace GameJam
         {
             celestialBodyTarget = target;
             orbitModification = expand;
-        }
-
-        public void SetBoost(bool status)
-        {
-            boosted = status;
-            if (status)
-                boostEffect.Play();
-            else
-                boostEffect.Stop();
         }
     }
 }

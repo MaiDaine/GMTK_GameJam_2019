@@ -8,7 +8,7 @@ public class GameUIController : MonoBehaviour
     public Button soundButton;
     public Sprite[] soundButtonImages;
 
-    private void Awake()
+    private void Start()
     {
         soundButton.image.sprite = soundButtonImages[MusicPlayer.instance.volume];
     }

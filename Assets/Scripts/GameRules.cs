@@ -72,7 +72,7 @@ namespace GameJam
 
         private void PlayAudioClip(AudioClip clip)
         {
-            audioSource.volume = MusicPlayer.instance.volume;
+            audioSource.volume = MusicPlayer.instance.volume * 0.4f;
             audioSource.clip = clip;
             audioSource.Play();
         }

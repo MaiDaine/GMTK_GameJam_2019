@@ -7,7 +7,6 @@ namespace GameJam
         public Camera mainCamera;
 
         private SolarSailsController sailsController;
-        private float boosterReserve = 1f;
 
         private const int maskSolarWind = 1 << 8;
 
@@ -29,13 +28,6 @@ namespace GameJam
                 sailsController.RotateSails(1);
             else if (Input.GetKey(KeyCode.D))
                 sailsController.RotateSails(-1);
-            if (Input.GetKey(KeyCode.Z) && boosterReserve > 0f)
-            {
-                sailsController.SetBoost(true);
-                boosterReserve -= Time.deltaTime;
-            }
-            else if (Input.GetKeyUp(KeyCode.Z))
-                sailsController.SetBoost(false);
             if (Input.GetKey(KeyCode.S))
                 sailsController.SetSailNeutralState();
 
